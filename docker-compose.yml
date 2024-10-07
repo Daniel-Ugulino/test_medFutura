@@ -1,0 +1,25 @@
+version: '1.0'
+services:
+  med_futura:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      DBHOST: postgresql
+      DBPORT: 5432
+      DBSOURCE: med_futura
+      DBUSER: test_med
+      DBPASSWORD: test_med
+    depends_on:
+      - postgresql
+
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: test_med
+      POSTGRES_PASSWORD: test_med
+      POSTGRES_DB: med_futura
+    ports:
+      - "5433:5432"
