@@ -47,9 +47,9 @@ public class PessoaController {
     }
 
     @GetMapping()
-    public ResponseEntity<Object> getPessoaByTermo(@RequestParam String termo) {
+    public ResponseEntity<Object> getPessoaByTermo(@RequestParam String t) {
         try {
-            List<Pessoa> pessoa = pessoaService.getByTermo(termo);
+            List<Pessoa> pessoa = pessoaService.getByTermo(t);
             if (pessoa != null) {
                 return ResponseEntity.status(HttpStatus.OK).body(pessoa); // 200 OK
             } else {
